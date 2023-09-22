@@ -1,0 +1,19 @@
+version: "3.2"
+
+services:
+  mmvib-connectinfra-adapter:
+    build: .
+    volumes:
+      - .:/code
+    command: ["gunicorn", "--reload", "tno.connectinfra_adapter.main:app", "-t 300", "-w 1", "-b :9202"]
+    ports:
+      - "9202:9202"
+    env_file:
+      - ".env.docker"
+    networks:
+      - mmvib-net
+
+networks:
+  mmvib-net:
+    external:
+      name: mmvib-net
