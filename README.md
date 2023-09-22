@@ -1,6 +1,6 @@
 # MMvIB ConnectInfra Model Adapter
 
-The API is available at http://localhost:9221/openapi
+The API is available at http://localhost:9202/openapi
 
 The project is based on TNO's Flask REST API template. For more information, see below.
 
