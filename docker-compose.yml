@@ -5,13 +5,22 @@ services:
     build: .
     volumes:
       - .:/code
-    command: ["gunicorn", "--reload", "tno.connectinfra_adapter.main:app", "-t 300", "-w 1", "-b :9202"]
+    command: ["gunicorn", "--reload", "tno.connectinfra_adapter.main:app", "-t 300", "-w 1", "-b :9230"]
     ports:
-      - "9202:9202"
+      - "9230:9230"
     env_file:
       - ".env.docker"
     networks:
       - mmvib-net
+
+  connectinfra:
+    image: esdlmapeditoressim/connectinfra:latest
+    command: [ "python", "tno/connectinfra/main.py" ]
+    ports:
+      - "9231:9213"
+    environment:
+      - ENV=dev
+      - FLASK_APP=backend/tno.connectinfra.main
 
 networks:
   mmvib-net:
