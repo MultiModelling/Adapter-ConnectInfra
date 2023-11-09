@@ -105,9 +105,10 @@ class Model(ABC):
                 self.model_run_dict[model_run_id].result = {
                     "result": res
                 }
+            self.model_run_dict[model_run_id].state = ModelState.SUCCEEDED
             return ModelRunInfo(
                 model_run_id=model_run_id,
-                state=ModelState.SUCCEEDED,
+                state=self.model_run_dict[model_run_id].state,
             )
         else:
             return ModelRunInfo(
@@ -132,8 +133,7 @@ class Model(ABC):
 
     def status(self, model_run_id: str):
         if model_run_id in self.model_run_dict:
-            self.model_run_dict[model_run_id].state = ModelState.SUCCEEDED
-
+            #self.model_run_dict[model_run_id].state = ModelState.SUCCEEDED
             return ModelRunInfo(
                 state=self.model_run_dict[model_run_id].state,
                 model_run_id=model_run_id,

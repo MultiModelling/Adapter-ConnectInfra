@@ -65,6 +65,11 @@ class ConnectInfra(Model):
             model_run_info = Model.store_result(self, model_run_id=model_run_id, result=esdl_str)
             return model_run_info
         else:
+            if model_run_id in self.model_run_dict:  # record state, such that we can return it in other calls
+                self.model_run_dict[model_run_id].state = ModelState.ERROR
+            else:
+                print("Can't find model run id in local administration. ERROR")
+
             return ModelRunInfo(
                 model_run_id=model_run_id,
                 state=ModelState.ERROR,
