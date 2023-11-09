@@ -47,7 +47,7 @@ def create_app(object_name):
         logger.info("Registering with MM Registry")
 
         # Register adapter to MM Registry
-        registry_data = {"uri": "http://mmvib-connect-infra-adapter:9202", "used_workers": 0, "name": "CONNECT_INFRA",
+        registry_data = {"uri": EnvSettings.external_url(), "used_workers": 0, "name": EnvSettings.adapter_id(),
                          "owner": "localhost", "version": "1.0", "max_workers": 1}
 
         try:
