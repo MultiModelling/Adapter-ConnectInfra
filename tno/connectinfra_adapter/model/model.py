@@ -83,7 +83,7 @@ class Model(ABC):
         if model_run_id in self.model_run_dict:
             res = self.process_results(result)
             if self.minio_client:
-                content = BytesIO(bytes(res, 'ascii'))
+                content = BytesIO(bytes(res, 'utf8'))
 
                 if self.model_run_dict[model_run_id].config.base_path is not None:
                     path = self.process_path(self.model_run_dict[model_run_id].config.output_file_path,
