@@ -48,8 +48,8 @@ class ConnectInfra(Model):
             "carrier_mapping": config.carrier_mapping,
             "carrier_mapping_attribute": config.carrier_mapping_attribute,
             "aggregate_assets": config.aggregate_assets,
-            "infra_esdl_b64": input_esdl_b64_string,
-            "esdl_b64": infra_esdl_b64_string
+            "infra_esdl_b64": infra_esdl_b64_string,
+            "esdl_b64": input_esdl_b64_string
         }
 
         # logger.info(f"Request: {str(data_post)}")
